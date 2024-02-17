@@ -31,3 +31,8 @@ def predict_chances(request):
                              'petal_length': petal_length, 'petal_width': petal_width}, safe=False)
     else:
         return JsonResponse({'error': 'Invalid request'}, status=400)
+
+
+def view_results(request):
+    data = {"dataset": PredResults.objects.all()}
+    return render(request, "results.html", data)
